@@ -196,14 +196,14 @@ const submitProblem = asyncHandler(async (req, res) => {
 try {
   const problem = await Problem.findOne({ _id: problem_id }).exec();
   const user = await User.findOne({ _id: user_id }).exec();
-  const potd = await axios.get('http://localhost:3500/problemOfTheDay')
+  const potd = await axios.get('https://chillcode-api.onrender.com/problemOfTheDay')
   const potd_id = potd.data._id
   console.log("potd",potd.data)
   
   let status, resStatus, resMessage, resOutput;
   
   try{
-  const response = await axios.post('http://localhost:3500/problem/run', {
+  const response = await axios.post('https://chillcode-api.onrender.com/problem/run', {
     code: code,
     language: language,
     inputRadio: problem.inputRadio,
